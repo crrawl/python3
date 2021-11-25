@@ -1,6 +1,9 @@
 import os
 
-# Attīra termināli, priekš linuxiem likt 
+''' 
+Pārbauda, kāda operētājsistēma ir lietotājam
+skatoties no rezultāta izvadas attiecīga komanda
+'''
 if os.name == "nt": # posx, java, nt
     os.system("cls")
 else:
