@@ -3,7 +3,8 @@ import os
 ''' 
 Pārbauda, kāda operētājsistēma ir lietotājam
 skatoties no rezultāta izvadas attiecīga komanda
-''' 
+'''
+
 if os.name == "nt": # posx, java, nt
     os.system("cls")
 else:
