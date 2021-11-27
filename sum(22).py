@@ -19,8 +19,8 @@ while True:
     number = int(input("Ievadiet pozitīvu divciparu skaitli -> "))
     
     # Pārveidoju number uz string, lai varētu noteikt tās garumu.
-    
     numb = str(number)
+    
     # Iegūst simbolu skaitu iekš mainīgā number
     num = len(numb)
 
