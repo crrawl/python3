@@ -17,9 +17,12 @@ print(">> Iziet no programmas var ar kombināciju (Ctrl + C)")
 while True:
     # Prasa ciparu. Sagaida, ka ievadīs: type int
     number = int(input("Ievadiet pozitīvu divciparu skaitli -> "))
-
+    
+    # Pārveidoju number uz string, lai varētu noteikt tās garumu.
+    
+    numb = str(number)
     # Iegūst simbolu skaitu iekš mainīgā number
-    num = len(number)
+    num = len(numb)
 
     # Pārbauda vai ir mainīgajā ir 2 simboli
     if num != 2:
