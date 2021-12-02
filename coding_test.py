@@ -1,8 +1,13 @@
 import os
-from pywebio.input import input
-from pywebio.output import put_text as printt
 
-name = input("username: ")
-age  = input("age: ")
+from pywebio import start_server
+from pywebio.input import *
+from pywebio.output import *
 
-printt(f"Your name is {name} \nAnd your age is {age} ")
+# PyWebIO application
+def main():
+    put_text("Hello WOrld")
+
+
+if __name__ == "__main__":
+    start_server(main,debug="True", host="localhost", port=8080)
