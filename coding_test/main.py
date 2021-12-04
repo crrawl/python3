@@ -8,6 +8,19 @@ from rich.console import Console
 from rich.theme import Theme
 from rich.table import Table
 
+# FUNCTIONS 
+def askQuestion(group, n):
+    console.print(questions[group]["question"][n])
+    questions[group]["answered"][n] = input("Ievadiet atbildi => ")
+
+def checkAnswer(group, n):
+    global points
+    if questions[group]["answers"][n] == questions[group]["answered"][n]:
+        console.print("[+] Atbilde ir pareiza: " + questions[group]["answers"][n], style="success")
+        points += questions[group]["points"][n]
+    else:
+        console.print("[-] Pareizā atbilde ir: " + questions[group]["answers"][n], style="error" )
+
 # Color Theme: create new colour theme
 custom_theme = Theme({  "error" : "bold red", 
                         "success" : "bold green", 
@@ -31,12 +44,6 @@ else:
     os.system("clear")
 # points
 points = 0
-# Dictionary answers
-answers = {
-    "PHP": {
-        
-    }
-}
 # Import json dictiionary
 with open('dictionary.json') as dict:
   questions = json.load(dict)
@@ -60,7 +67,6 @@ console.print(questions["start"]["question"]["N1"])
 # Enter a skills key then split on "," char 
 PSkills = str(input("Atbildi ievadiet ar ','. Piemērs a,e => ")).replace(" ","").lower().split(",")
 
-# print(PSkills) # print entered skills. TIMED FUNC
 
 '''
 The loop goes through all the elements of PSkills, then in the perpetual loop it is checked 
@@ -79,19 +85,9 @@ for ikey in PSkills:
 
 # while True:
 
-def askQuestion(group, n):
-    console.print(questions[group]["question"][n])
-    questions["PHP"]["answered"][n] = input("Ievadiet atbildi => ")
+askQuestion("PY", "N1")
 
-askQuestion("PHP", "N1")
-
-print(questions["PHP"]["answered"], questions["PHP"]["question"])
-
-if questions["PHP"]["answers"]["N1"] == questions["PHP"]["answered"]["N1"]:
-    console.print("[+] Atbilde ir pareiza: " + questions["PHP"]["answers"]["N1"], style="success")
-    points += questions["PHP"]["points"]["N1"]
-else:
-    console.print("[-] Pareizā atbilde ir: " + questions["PHP"]["answers"]["N1"], style="error" )
+checkAnswer("PY", "N1")
 
 console.print("Jūsu punktu skaits ir " + str(points), style="success")
 

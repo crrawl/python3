@@ -34,5 +34,28 @@
             "N9": 9,
             "N10": 10
         }
+    },
+    "PY": {
+        "question": {
+            "N1": "\nK\u0101da ir PY abriviat\u016bra ?\n[option](a)[/] Hypertext Preprocessor\n[option](b)[/] Hipervisor Processor\n[option](c)[/] Page Handler Proccessor\n            "
+        },
+        "answers": {
+            "N1": "b"
+        },
+        "answered": {
+            
+        },
+        "points": {
+            "N1": 1,
+            "N2": 2,
+            "N3": 3,
+            "N4": 4,
+            "N5": 5,
+            "N6": 6,
+            "N7": 7,
+            "N8": 8,
+            "N9": 9,
+            "N10": 10
+        }
     }
 }
