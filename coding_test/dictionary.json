@@ -1,0 +1,38 @@
+{
+    "start": {
+        "WELCOME": "\nSveicin\u0101ts-/a!\n\u0160eit j\u016bs var\u0113siet p\u0101rbaud\u012bt savas zin\u0101\u0161anas programm\u0113\u0161an\u0101,\njums tiks uzdoti 10 jaut\u0101jumi uz kuriem atbildot jums\ntiks izsniegts v\u0113rt\u0113jums attiec\u012bb\u0101 no j\u016bsu punktu skaita.\nJo vair\u0101k punktu sekojo\u0161i gudr\u0101ks esiet \ud83d\ude09\ud83d\udc4c.\n\n~ Projektu veidot\u0101js: Raivis, \u3089\u3044\u3073\u3059\u2015\u30af\u30e9\u30e0!\n\n[error][!][/] Lai turpin\u0101tu spie\u017eiet ENTER\n",
+        "question": {
+            "N1": "Ievadiet programm\u0113\u0161anas valodas kuras p\u0101rzinat \n[option](a)[/] C\n[option](b)[/] GO\n[option](c)[/] PY\n[option](d)[/] PHP\n[option](e)[/] IT Security\n"
+        }
+    },
+    "skills": {
+        "a": "C",
+        "b": "GO",
+        "c": "PY",
+        "d": "PHP",
+        "e": "IT Security"
+    },
+    "PHP": {
+        "question": {
+            "N1": "\nK\u0101da ir PHP abriviat\u016bra ?\n[option](a)[/] Hypertext Preprocessor\n[option](b)[/] Hipervisor Processor\n[option](c)[/] Page Handler Proccessor\n            "
+        },
+        "answers": {
+            "N1": "a"
+        },
+        "answered": {
+            
+        },
+        "points": {
+            "N1": 1,
+            "N2": 2,
+            "N3": 3,
+            "N4": 4,
+            "N5": 5,
+            "N6": 6,
+            "N7": 7,
+            "N8": 8,
+            "N9": 9,
+            "N10": 10
+        }
+    }
+}
