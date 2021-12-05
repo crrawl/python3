@@ -181,6 +181,7 @@ try:
         try:
             giveQuestion()
             show_table = True
+            clearChat() #clear terminal after questions
 
         except KeyError:
             # if entered key who don't exist in skill json list
@@ -194,7 +195,7 @@ try:
 
 
         # KOPSAVILKUMS
-            
+
         if show_table: # if before this code has been finded an error. This table don't showed to user
 
             # Output user information 
@@ -211,7 +212,9 @@ try:
             console.print(table)
 
             # Analyse all taken information and return answer to user
-            if points <= 3 and len(PSkills) == 1:
+            if points == 0:
+                console.print("\n[RESULT][!] [white] Tu esi anskills, iemācies lietot Google vismaz[/]\n", style="green")
+            elif points >= 1 and points <= 3 and len(PSkills) == 1:
                 console.print("\n[RESULT][!] [white]Tev vajadzētu pamēģināt izvēlēties vieglāku valodu.[/]\n", style="green")
             elif points >= 4 and points <= 6 and len(PSkills) == 1:
                 console.print("\n[RESULT][!] [white]Nešaubīšos ja tu vēl deletants programmēšanas sfērā, kurš vēl nav uzspējis vilties savos sapņos[/]\n", style="green")
@@ -229,8 +232,6 @@ try:
                 console.print("\n[RESULT][!] [white]Mēģināji uzreiz visas trīs valodas, bet tomērt tev vajadzētu vēl pamācīties.[/]\n", style="green")
             elif points >= 7 and points <= 10 and len(PSkills) == 3:
                 console.print("\n[RESULT][!] [white]Noteikti ir pieredze un saproti, ko nozīmē būt programmistam. Skaties uz deletantiem no augšas uz leju.\n Tajā sakitā uz mani, jo tev liekas šie jautajumi pārāk viegli un tizli. Un vispār priekš bērnudārzniekiem taisīts tests[/]\n", style="green")
-            elif points == 0:
-                console.print("\n[RESULT][!] [white] Tu esi anskills, iemācies lietot Google vismaz[/]\n", style="green")
        
         break
 except KeyboardInterrupt:
