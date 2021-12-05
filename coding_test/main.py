@@ -1,3 +1,10 @@
+# ----------------------------------------------------- 
+# @Author 来ビス―クラム　(raibisu.kuramu@gamil.com)
+# @github https://github.com/yuukuramu
+# @instagram https://www.instagram.com/raibisu.kuramu
+# @site https://yuukuramu.xyz
+# -----------------------------------------------------
+
 # from logging import error
 import os
 import sys
@@ -16,27 +23,31 @@ from rich.table import Table
 # FUNCTIONS 
 
 def askQuestion(group, n):
+    """ Take 2 params
+        group | skill group PHP, GO, PY ...
+        n | Number of question N(1-10)
+        
+        3 global veriables | points, correct and incorrect answers
+        """
     global  points, correct, incorrect
     # Ask question 
     print("---------------------------------------")
     console.print(questions[group]["question"][n])
     print("---------------------------------------")
-
+    # Add answer to answered list
     questions[group]["answered"][n] = input("Ievadiet atbildi => ").lower()
     # Check a answer
     if questions[group]["answers"][n] == questions[group]["answered"][n]:
-        print("")
-        console.print("[+] Atbilde ir pareiza: " + questions[group]["answers"][n], style="success")
-        print("")
-        points += questions[group]["points"][n]
-        correct += 1
+        console.print("\n[+] Atbilde ir pareiza: " + questions[group]["answers"][n] + "\n", style="success")
+        points += questions[group]["points"][n] # Add points 
+        correct += 1 # if answer correct. add 1 to correct answers
     else:
-        print("")
-        console.print("[-] Pareizā atbilde ir: " + questions[group]["answers"][n], style="error" )
-        print("")
-        incorrect += 1
+        # Output right answer
+        console.print("\n[-] Pareizā atbilde ir: " + questions[group]["answers"][n] + "\n", style="error" )
+        incorrect += 1 # if answer incorrect. add 1 to incorrect answers
 
 def getRandQuestNumList():
+    """ return list of Numbers N(1-10) """
     list = []
     n = 1
     while n < 50:
@@ -51,16 +62,28 @@ def getRandQuestNumList():
     return list
 
 def getSkillItem():
+    """ return one random skill from PSkills(entered skills) """
     skills = random.choice(PSkills)
     skill = questions["skills"][skills]
     return skill 
 
 def giveQuestion():
+    """ Give 10 random questions without dublication """
     list = getRandQuestNumList()
 
     for key in list:
         skill = getSkillItem()
         askQuestion(skill, key)
+
+def clearChat():
+    """ Pārbauda, kāda operētājsistēma ir lietotājam
+    skatoties no rezultāta izvadas attiecīga komanda
+    un attīras console"""
+
+    if os.name == "nt": # posx, java, nt
+        os.system("cls")
+    else:
+        os.system("clear")
 
 # Color Theme: create new colour theme
 custom_theme = Theme({  "error" : "bold red", 
@@ -76,14 +99,7 @@ console = Console(theme=custom_theme)
 
 
 
-''' 
-Pārbauda, kāda operētājsistēma ir lietotājam
-skatoties no rezultāta izvadas attiecīga komanda
-'''
-if os.name == "nt": # posx, java, nt
-    os.system("cls")
-else:
-    os.system("clear")
+clearChat()
 
 # Veriables
 
@@ -102,13 +118,26 @@ emojies = ["😒", "😢", "😭", "😟", "😞", "😥", "😖", "☹", "😔"
 with open('dictionary.json') as dict:
     questions = json.load(dict)
 
+print('''
+----------------------------------------------------- 
+@Author 来ビス―クラム　(raibisu.kuramu@gamil.com)
+@github https://github.com/yuukuramu
+@instagram https://www.instagram.com/raibisu.kuramu
+@site https://yuukuramu.xyz
+-----------------------------------------------------
 
-# Sey to user, how to quit from app
-console.print(">> Iziet no programmas var ar kombināciju (Ctrl + C)", style="bold white")
+''')
 
-# introduction
-console.print(questions["start"]["WELCOME"])
+console.print("[attention][!][/] lūdzu palaižat šo skriptu konsolē kura patur UTF-8")
 try:
+    input("ENTER, lai turpinātu ")
+    clearChat()
+
+    # Sey to user, how to quit from app
+    console.print(">> Iziet no programmas var ar kombināciju (Ctrl + C)", style="bold white")
+
+    # introduction
+    console.print(questions["start"]["WELCOME"])
     # Turn eneter to continiune
     input()  
 
@@ -127,7 +156,10 @@ try:
         # Enter a skills key then split on "," char 
         PSkills = str(input("Atbildi ievadiet ar ','. Piemērs a,e => ")).replace(" ","").lower().split(",")
         if len(PSkills) < 0:
+            # if anything not entered
             console.print("[error][-][/] Jums jāizvēlas vismaz viena valoda")
+            break
+
 
         '''
         The loop goes through all the elements of PSkills, then in the perpetual loop it is checked 
@@ -151,35 +183,34 @@ try:
             show_table = True
 
         except KeyError:
+            # if entered key who don't exist in skill json list
             for key in PSkills:
                 if key not in questions["skills"].keys():
                     console.print("[error][-][/] Jums jāizvēlas viens no pieejamajiem atbilžu variantiem.")
-                    show_table = False
+                    show_table = False # Told later: if app need show table with results or no.
                     break
 
+            # console.print("Jūsu punktu skaits ir " + str(points), style="success")
 
 
         # KOPSAVILKUMS
             
-        if show_table:
-            def step(step):
-                print(step)
-                
-            for step in track(range(100)):
-                
-                console.print("Jūsu punktu skaits ir " + str(points), style="success")
-                table = Table(title="Kopsavilkums")
+        if show_table: # if before this code has been finded an error. This table don't showed to user
 
-                table.add_column("Vārds", style="magenta")
-                table.add_column("Pareizās atbildes", style="green")
-                table.add_column("Nepareizās atbildes", justify="left", style="magenta")
-                table.add_column("punkti", justify="left", style="green")
+            # Output user information 
+            table = Table(title="Kopsavilkums")
 
-                table.add_row(str(current_username), str(correct), str(incorrect), str(points))
-                
-                console = Console()
-                console.print(table)
+            table.add_column("Vārds", style="magenta")
+            table.add_column("Pareizās atbildes", style="green")
+            table.add_column("Nepareizās atbildes", justify="left", style="magenta")
+            table.add_column("punkti", justify="left", style="green")
 
+            table.add_row(str(current_username), str(correct), str(incorrect), str(points))
+            
+            console = Console()
+            console.print(table)
+
+            # Analyse all taken information and return answer to user
             if points <= 3 and len(PSkills) == 1:
                 console.print("\n[RESULT][!] [white]Tev vajadzētu pamēģināt izvēlēties vieglāku valodu.[/]\n", style="green")
             elif points >= 4 and points <= 6 and len(PSkills) == 1:
@@ -203,8 +234,10 @@ try:
        
         break
 except KeyboardInterrupt:
-    
+
+    # get random emoji from emojies liset
     emoji = random.choice(emojies)
 
+    # GoodBye message if pressed CTRL + C
     console.print("\n[attention]Ceru palaidīsi mani vēlreiz [/]" + emoji)
     sys.exit()
