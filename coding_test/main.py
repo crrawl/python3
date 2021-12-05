@@ -117,7 +117,17 @@ try:
         console.print(questions["start"]["question"]["N1"])
 
         # Enter a skills key then split on "," char 
-        PSkills = str(input("Atbildi ievadiet ar ','. Piemērs a,e => ")).replace(" ","").lower().split(",")
+        try:
+            PSkills = str(input("Atbildi ievadiet ar ','. Piemērs a,e => ")).replace(" ","").lower().split(",")
+            print(PSkills)
+        except KeyError:
+            for key in PSkills:
+                print(PSkills)
+                print(key)
+                print(questions["skills"].keys())
+                if key not in questions["skills"].keys():
+                    console.print("[error][-][/]Jums jāizvēlas viens no pieejamajiem atbilžu variantiem.")
+                    continue
 
         '''
         The loop goes through all the elements of PSkills, then in the perpetual loop it is checked 
