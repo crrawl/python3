@@ -27,6 +27,7 @@ while True:
         print(firstNummber * secondNummber)
     elif operator == "/":
         print(firstNummber / secondNummber)
-
+    elif operator == "%":
+        print(firstNummber % secondNummber)
     # all code upper can be writen with one line under.
     # print(eval(input()))
