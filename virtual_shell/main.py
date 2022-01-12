@@ -106,6 +106,9 @@ if __name__ == "__main__":
                 elif cmd[0] == "mkdir":
                     mkdir(cmd[1])
                     break
+                elif cmd[0] == "commands":
+                    commands()
+                    break
                 else:
                     console.print("[warning][!][/] unknown command")
 
