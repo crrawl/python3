@@ -9,3 +9,6 @@ This is a coding test. answer to the questions.
 ### one line cauculator 
 Just cauculator <br />
 Example: 2 % 2
+### one line cauculator 
+virtual parody to shell <br />
+Example; mkdir filename
