@@ -13,7 +13,7 @@ points = 0
 try:
     while True:
 
-        rand_door = randint(1,3)
+        rand_door = randint(1, 3)
         print("""
 Tev priekšā ir trīs durvis…
 Aiz vienām ir spoks.
@@ -36,8 +36,6 @@ Spēle beigusies. Tu ieguvi spēle {points} punktus.
             print("""
     Tādas durvis neeksistē!
             """)
-
-
 
         input("ENTER lai turpinātu")
 except KeyboardInterrupt:
