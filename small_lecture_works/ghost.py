@@ -33,13 +33,12 @@ Spēle beigusies. Tu ieguvi spēle {points} punktus.
             """)
             points = 0
         else:
-            print("""
-    Tādas durvis neeksistē!
-            """)
+            print("Tādas durvis neeksistē!")
 
-        input("ENTER lai turpinātu")
 except KeyboardInterrupt:
     print(f"\nTiksimies citreiz: Jūsu punktu skaits {points}")
+except ValueError:
+    print("Tikai cipari")
 
 """
 if record > points:
