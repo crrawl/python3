@@ -1,6 +1,11 @@
 
 from random import randint
+import os
 
+if os.name == "nt":  # posx, java, nt
+        os.system("cls")
+else:
+    os.system("clear")
 
 print("""
 Sveicināts iekš spēles "GHOST"
