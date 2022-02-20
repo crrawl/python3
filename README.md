@@ -1,14 +1,10 @@
 # Python3 
 
-### sum(22).py
-Get 2 numbers and sum it between himself! <br />
-<br />
-### coding_test.py
-This is a coding test. answer to the questions.
+### IT_know_test
+Answer to questions
 `pip install -r requirements.txt`
-### one line cauculator 
-Just cauculator <br />
-Example: 2 % 2
-### one line cauculator 
-virtual parody to shell <br />
-Example; mkdir filename
+<br />
+
+### tmpscript
+Workspace of temp scripts
+<br />

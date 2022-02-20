@@ -1,2 +1,3 @@
 #!/usr/bin/env python3
+# PATH=$PATH:/mnt/c/python3/tmpscirpt
 print("hello world")
