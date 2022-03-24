@@ -6,10 +6,9 @@
 # @site https://yuukuramu.xyz
 # -----------------------------------------------------
 
-from multiprocessing.sharedctypes import Value
 import os
-# import sys
 import random
+import json
 
 from rich import emoji
 from rich.console import Console
@@ -24,7 +23,7 @@ custom_theme = Theme(
         "attention": "bold yellow",
         "warning": "bold magenta",
         "option": "violet",
-        "blocked": "#383B40",
+        "white": "#ffffff",
     }
 )
 
@@ -34,8 +33,27 @@ custom_theme = Theme(
 global emojies
 emojies = ["😒", "😢", "😭", "😟", "😞", "😥", "😖", "☹", "😔"]
 
+# Import json dictiionary
+with open("questions.json") as dict:
+    questions = json.load(dict)
+
 # shortcut
 console = Console(theme=custom_theme)
+
+# console.print( questions['N1'] )
+
+### FUNCTIONS
+def clearTerminal():
+    """
+    Clear the terminal window
+    """
+
+    if os.name == "nt":  # posx, java, nt
+        os.system("cls")
+    else:
+        os.system("clear")
+
+
 
 # copyright
 print(
@@ -60,13 +78,18 @@ console.print("[attention][!][/] lūdzu palaižat šo skriptu konsolē kura atba
 ### PROGRAMMA
 try:
     while True:
-        console.print("[option][?][/] Ievadiet mājas un dzīvokļa nummuru \nPiemērs: 2, 3")
+        console.print("[option][?][/] Ievadiet mājas, dzīvokļa nummuru un cik piedalās aptaujā no dzīvokļa \nPiemērs: 2, 3, 2")
         try:
             house = [int(n) for n in input("=> ").split(',')]
+            console.print("[option][?][/] Cik no dzīvokļa piedalās aptaujā")
+            
+            # for i in range(house[2]):
+                
+
         except ValueError:
             console.print("[error][-][/] Atļauti tikai cipari")
             continue
-        
+
         print(house)
         console.print(f"""[success][+][/] Jūsu mājas nummurs: {house[0]}, dzīvokļa nummurs: {house[1]}""")
         
