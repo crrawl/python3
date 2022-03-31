@@ -123,7 +123,7 @@ try:
     [attention]Cilvēks dzīvoklī[/]: {people},
     [attention]Jautājums[/]: {n} """)
     # ==================={DEBUG}===================
-                            # console.print(questions[n])
+                            console.print(questions[n])
                             console.print("[white]-[/] [error](Nē)[/], [white]/[/] [warning](Pašreiz neitrāls)[/], [white]+[/] [success]Jā![/]")
                             answer = input("=> ")
                             path = f"{house_nr}/{a_nr}/{people}/{n}"
@@ -144,9 +144,9 @@ try:
                 person = survey_results[2]
                 question = survey_results[0]
 
-                if int(h_nr) > 0:
-                    print(f"Māja {h_nr}, Dzīvoklis {a_nr}, cilvēks {person}")
-                    print(n, answers[n])
+                # if int(h_nr) > 0:
+                print(f"Māja {h_nr}, Dzīvoklis {a_nr}, cilvēks {person}")
+                print(n, answers[n])
 
 
 
