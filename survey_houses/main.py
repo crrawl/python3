@@ -147,7 +147,7 @@ try:
                 h_nr = survey_results[0]
                 a_nr = survey_results[1]
                 person = survey_results[2]
-                question = survey_results[0]
+                question = survey_results[3]
 
                 # if int(h_nr) > 0:
                 print(f"Māja {h_nr}, Dzīvoklis {a_nr}, cilvēks {person}")
