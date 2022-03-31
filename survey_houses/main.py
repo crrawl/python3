@@ -126,73 +126,31 @@ try:
                             # console.print(questions[n])
                             console.print("[white]-[/] [error](Nē)[/], [white]/[/] [warning](Pašreiz neitrāls)[/], [white]+[/] [success]Jā![/]")
                             answer = input("=> ")
-                            
-                            path = f"{house_nr}/{a_nr}/{people}/{n}" 
+                            path = f"{house_nr}/{a_nr}/{people}/{n}"
                             allowed = ["+", "-", "/"]
-                            
-                            if answer in allowed: 
+                            if answer in allowed:
                                 answers[path] = answer
-                            else:
-                                console.print(f"[error][-][/] Jūs ievadijāt neeksistējošu opciju, jūšu atbilde tiks anulēta!")
-                                answers[path] = "Anuled"
+                                print(answers)
+
             
+            console.print(f"[attention][!][/] Aptaujas rezultati!")
             for n in answers:
-                print(n, len(n))
+
                 global survey_results
                 survey_results = n.split("/")
 
-                # -- defines
-                # survey_results[0] == House nummber 
-                # survey_results[1] == Appartament nummber 
-                # survey_results[2] == person in apartament 
-                # survey_results[3] == question
-                #
-                  
-                # print(survey_results)
-                # print(survey_results)
-                # wait(3)
+                h_nr = survey_results[0]
+                a_nr = survey_results[1]
+                person = survey_results[2]
+                question = survey_results[0]
 
-
-            console.print(f"[attention][!][/] Aptaujas rezultati!")
-            for i in range(house_count):
-                survey = Table(title=f"Maja {i}")
-
-                survey.add_column("Jautājums", style="magenta")
-                survey.add_column("kods", style="green")
-                survey.add_column("Piekrīt", justify="left", style="magenta")
-                survey.add_column("Nepiekrīt", justify="left", style="green")
-                survey.add_column("Atturas", justify="left", style="magenta")
-                survey.add_column("Anulētas atbildes", justify="left", style="green")
-                for i in answers.values():
-                    global pos
-                    global neg
-                    global neitral
-                    pos = ""
-                    neg = ""
-                    neitral = ""
-
-                    if i == "+":
-                        pos+=i
-                    elif i == "-":
-                        neg += i
-                    else:
-                        neitral += i
-
-                        print(pos, neg, neitral, "<-- answers")
-
-                for key in questions:
-
-                    survey.add_row(
-                    str(questions[key]), str(key), str(), str(1), str(1), str(1)
-                )
-
-                    console = Console()
-                    console.print(survey)
+                if int(h_nr) > 0:
+                    print(f"Māja {h_nr}, Dzīvoklis {a_nr}, cilvēks {person}")
+                    print(n, answers[n])
 
 
 
-            # print(ans, len(ans))
-            # print(answers)
+
             break
         except ValueError:
             clearTerminal()
