@@ -10,6 +10,7 @@ import os
 import random
 import json
 from time import sleep
+from turtle import pos
 
 from rich import emoji
 from rich.console import Console
@@ -84,11 +85,6 @@ print(
 wait(2)
 clearTerminal()
 
-# TODO
-"""
-    Aptaujā parada cik % bija pozitivas atbildes cik negativas cik neitraslas
-"""
-
 ### PROGRAMMA
 try:
     while True:
@@ -126,13 +122,22 @@ try:
                             console.print(questions[n])
                             console.print("[white]-[/] [error](Nē)[/], [white]/[/] [warning](Pašreiz neitrāls)[/], [white]+[/] [success]Jā![/]")
                             answer = input("=> ")
+
                             path = f"{house_nr}/{a_nr}/{people}/{n}"
                             allowed = ["+", "-", "/"]
+                            
                             if answer in allowed:
                                 answers[path] = answer
                                 print(answers)
+            # positives = ""
+            # negatives = ""
+            # neutral = ""
 
-            
+            # positives = [s for s in answers.values() if s == "+"]
+            # negatives = [s for s in answers.values() if s == "-"]
+            # neutral = [s for s in answers.values() if s == "/"]
+            # print(positives, negatives, neutral)
+
             console.print(f"[attention][!][/] Aptaujas rezultati!")
             for n in answers:
 
@@ -147,9 +152,6 @@ try:
                 # if int(h_nr) > 0:
                 print(f"Māja {h_nr}, Dzīvoklis {a_nr}, cilvēks {person}")
                 print(n, answers[n])
-
-
-
 
             break
         except ValueError:
